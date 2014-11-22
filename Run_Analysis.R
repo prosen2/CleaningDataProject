@@ -41,12 +41,14 @@ mergedYData$ActivityDesc <-factor(mergedYData$Activity, levels = c(1,2,3,4, 5, 6
 
 fullData<-cbind(mergedSubData, mergedYData, exData)
 
-#Install reshape package (install.packages("reshape") if not already installed
-#load reshape package in order to reshape data
+#Install reshape2 package (install.packages("reshape2") if not already installed
+#load reshape2 package in order to reshape data
 
-library(reshape)
+library(reshape2)
 
-dataMelt <- melt(fullData, id=c("Subject_ID", "Activity"))
+titleList <-names(exData) # creates the variable list for melt
 
+dataMelt <- melt(fullData, id.var=c("Subject_ID", "Activity"), measure.vars=titleList)
 
+dataMeans <- dcast(dataMelt, Subject_ID + Activity ~ variable, mean)
 
