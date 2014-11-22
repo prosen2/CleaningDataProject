@@ -30,12 +30,14 @@ exData<- mergedXData[,grep("mean()|std()", names(mergedXData))]
 
 #Step 3: Use descriptive names to name each activity in the data set
 
-mergedYData$ActivityDesc <-factor(mergedYData$Activity, levels = c(1,2,3,4, 5, 6), labels = c("Walking", "Walking_Upstairs", "Walking_Downstairs", "Sitting", "Standing", "Laying")) 
+names(mergedYData) <-"Activity"
+
+mergedYData$ActivityDesc <-factor(mergedYData$Activity, levels = c(1,2,3,4,5,6), labels = c("Walking", "Walking_Upstairs", "Walking_Downstairs", "Sitting", "Standing", "Laying")) 
 
 #Step 4: Appropriately label the data set with descriptive variable names
 
-names(mergedSubData) <- "Subject_ID"
-names(mergedYData) <-"Activity"
+names(mergedSubData) <- "Subject_ID" #Other descriptive names already added above when needed
+
 
 #Complete merger into a single data set
 fullData<-cbind(mergedSubData, mergedYData, exData)
@@ -50,8 +52,8 @@ library(reshape2)
 
 titleList <-names(exData) # creates the variable list for melt
 
-dataMelt <- melt(fullData, id.var=c("Subject_ID", "Activity"), measure.vars=titleList)
+dataMelt <- melt(fullData, id.var=c("Subject_ID", "ActivityDesc"), measure.vars=titleList)
 
-dataMeans <- dcast(dataMelt, Subject_ID + Activity ~ variable, mean)
+dataMeans <- dcast(dataMelt, Subject_ID + ActivityDesc ~ variable, mean)
 
 write.table(dataMeans, "MeanActivityData.txt", row.name=FALSE, sep = "\t")

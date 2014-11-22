@@ -48,7 +48,7 @@ The following files are available for the train and test data. Their description
 Development of the Tidy Data Set
 ================================
 
-Using the above data, a tidy data set was produced using the following steps using the R Programing language (version 3.0.3)
+Using the above data, a tidy data set was produced using the following steps with the R Programing language (version 3.0.3) on Mac OS 10.10
 
 1. The data was downloaded from the original file location at:
 https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip 
