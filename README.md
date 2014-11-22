@@ -1,4 +1,4 @@
-Read Me file for Acticity Data Cleaning Project
+Read Me file for Activity Data Cleaning Project
 ===================
 
 The files in this Repo are for the Getting and Cleaning Data Project.
