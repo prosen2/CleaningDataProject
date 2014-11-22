@@ -45,32 +45,15 @@ The following files are available for the train and test data. Their description
 
 - 'train/Inertial Signals/body_gyro_x_train.txt': The angular velocity vector measured by the gyroscope for each window sample. The units are radians/second. 
 
-Development of the Tidy Data Set
-================================
+Tidy Data Variables
+===================
 
-Using the above data, a tidy data set was produced using the following steps with the R Programing language (version 3.0.3) on Mac OS 10.10
+All original variable retained their original measures and units.
 
-1. The data was downloaded from the original file location at:
-https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip 
+Additional Variables:
 
-2. The data was unzipped and all files were placed in the working directory
+ActivityDesc - A factor variable that provides a description of each activity based on the code provided in the original data.  
+There are six factor levels: Walking, Walking_Upstairs, Walking_Downstairs, Sitting, Standing, Laying
 
-3. The following tables were read into R: subject_test, subject_train, X_test, y_test, X_train, y_train, features
-
-4. The following tables were combined x_train and x_test, y_train and y_test, subject_test and subject_train
-
-5. The feature names were used a column headers for the combined x tables.
-
-6. Only those variable that were a name or standard deviation measure were extracted from this X table
-
-7. A column of descriptive names was added to the Y table to describe the activity according to the activity_labels descriptions (i.e.: walking for 1, etc)
-
-8. The Heading “Subject_ID” was added to the Subject table and “Activity” was used for the Y table
-
-9. All three tables were merged into one dataset, called fullData in the script
-
-10. Using the reshape2 package in R, the fullData table was melted and then recast (using dcast) to create an independent, tidy dataset with the average of each variable for each activity and each subject.
-
-11. write.table was used to export this dataset to a text file called MeanActivityData.txt which is available in this Repo
-
+Subject_ID - The original subject identifiers from the y_test.txt and y_train.txt files that range from 1-30
 
