@@ -56,4 +56,5 @@ dataMelt <- melt(fullData, id.var=c("Subject_ID", "ActivityDesc"), measure.vars=
 
 dataMeans <- dcast(dataMelt, Subject_ID + ActivityDesc ~ variable, mean)
 
+#Output the data set as a txt file within the working directory folder
 write.table(dataMeans, "MeanActivityData.txt", row.name=FALSE, sep = "\t")
